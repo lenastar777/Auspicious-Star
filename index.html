@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auspicious Star - Crystal Metaphysics</title>
+    <style>
+        :root {
+            --primary-color: #5e2d8c;
+            --secondary-color: #f8d56b;
+            --earth-color: #8b5a2b;
+            --metal-color: #a8a8a8;
+            --water-color: #1e90ff;
+            --wood-color: #2e8b57;
+            --fire-color: #ff4500;
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f3f0;
+            color: #333;
+            background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .overlay {
+            background-color: rgba(249, 243, 240, 0.9);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #3a1c5e);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: normal;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-style: italic;
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin: 0 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            font-size: 2rem;
+        }
+
+        .crystal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .crystal-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .crystal-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .crystal-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .crystal-info {
+            padding: 1.5rem;
+        }
+
+        .crystal-name {
+            font-size: 1.3rem;
+            margin: 0 0 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .crystal-element {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .earth { background-color: var(--earth-color); color: white; }
+        .metal { background-color: var(--metal-color); color: black; }
+        .water { background-color: var(--water-color); color: white; }
+        .wood { background-color: var(--wood-color); color: white; }
+        .fire { background-color: var(--fire-color); color: white; }
+
+        .crystal-desc {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .article-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .article-card {
+            background-color: #fafafa;
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .article-title {
+            font-size: 1.4rem;
+            margin: 0 0 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .article-meta {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .article-excerpt {
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+
+        .footer-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            
+            .crystal-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <header>
+            <div class="header-content">
+                <h1>Auspicious Star</h1>
+                <p class="subtitle">Crystal Wisdom • Elemental Harmony • Destiny Alignment</p>
+            </div>
+        </header>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#crystals">Crystals</a></li>
+                <li><a href="#articles">Wisdom</a></li>
+                <li><a href="#social">Connect</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="crystals">
+                <h2>Sacred Crystals & Their Energies</h2>
+                <p>Discover the transformative power of these sacred stones, each aligned with one of the five Chinese elements to bring balance and harmony to your life.</p>
+                
+                <div class="crystal-grid">
+                    <!-- Crystal 1 -->
+                    <div class="crystal-card">
+                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Amethyst Crystal" class="crystal-img">
+                        <div class="crystal-info">
+                            <h3 class="crystal-name">Amethyst</h3>
+                            <span class="crystal-element water">Water</span>
+                            <p class="crystal-desc">The amethyst is known for its spiritual protection and purification properties. It enhances intuition and promotes emotional balance, making it ideal for those seeking to connect with their higher selves.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Crystal 2 -->
+                    <div class="crystal-card">
+                        <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Rose Quartz Crystal" class="crystal-img">
+                        <div class="crystal-info">
+                            <h3 class="crystal-name">Rose Quartz</h3>
+                            <span class="crystal-element earth">Earth</span>
+                            <p class="crystal-desc">The stone of unconditional love, rose quartz opens the heart chakra to all forms of love. It's particularly beneficial for healing emotional wounds and attracting loving relationships.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Crystal 3 -->
+                    <div class="crystal-card">
+                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Citrine Crystal" class="crystal-img">
+                        <div class="crystal-info">
+                            <h3 class="crystal-name">Citrine</h3>
+                            <span class="crystal-element fire">Fire</span>
+                            <p class="crystal-desc">Known as the merchant's stone, citrine attracts wealth, prosperity, and success. It carries the power of the sun, energizing every level of life and enhancing creativity.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Crystal 4 -->
+                    <div class="crystal-card">
+                        <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Black Tourmaline Crystal" class="crystal-img">
+                        <div class="crystal-info">
+                            <h3 class="crystal-name">Black Tourmaline</h3>
+                            <span class="crystal-element earth">Earth</span>
+                            <p class="crystal-desc">A powerful protective stone that repels and blocks negative energies. It's excellent for psychic protection and grounding, creating a shield around the aura.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Crystal 5 -->
+                    <div class="crystal-card">
+                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Clear Quartz Crystal" class="crystal-img">
+                        <div class="crystal-info">
+                            <h3 class="crystal-name">Clear Quartz</h3>
+                            <span class="crystal-element metal">Metal</span>
+                            <p class="crystal-desc">The master healer, clear quartz amplifies energy and thought. It enhances spiritual growth, clarity of mind, and can be programmed for any intention.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Crystal 6 -->
+                    <div class="crystal-card">
+                        <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Lapis Lazuli Crystal" class="crystal-img">
+                        <div class="crystal-info">
+                            <h3 class="crystal-name">Lapis Lazuli</h3>
+                            <span class="crystal-element water">Water</span>
+                            <p class="crystal-desc">The stone of wisdom and truth, lapis lazuli stimulates enlightenment and enhances intellectual ability. It's excellent for activating the third eye.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Crystal 7 -->
+                    <div class="crystal-card">
+                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Carnelian Crystal" class="crystal-img">
+                        <div class="crystal-info">
+                            <h3 class="crystal-name">Carnelian</h3>
+                            <span class="crystal-element fire">Fire</span>
+                            <p class="crystal-desc">A stone of motivation and endurance, carnelian boosts vitality and stimulates creativity. It's particularly beneficial for overcoming procrastination.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Crystal 8 -->
+                    <div class="crystal-card">
+                        <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Jade Crystal" class="crystal-img">
+                        <div class="crystal-info">
+                            <h3 class="crystal-name">Jade</h3>
+                            <span class="crystal-element wood">Wood</span>
+                            <p class="crystal-desc">Known as the dream stone in Chinese culture, jade brings harmony and balance. It attracts good luck and friendship while stabilizing the personality.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Crystal 9 -->
+                    <div class="crystal-card">
+                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Pyrite Crystal" class="crystal-img">
+                        <div class="crystal-info">
+                            <h3 class="crystal-name">Pyrite</h3>
+                            <span class="crystal-element metal">Metal</span>
+                            <p class="crystal-desc">Called fool's gold, pyrite is a stone of wealth and abundance. It enhances memory, stimulates intellect, and protects against negative energies.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Crystal 10 -->
+                    <div class="crystal-card">
+                        <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Malachite Crystal" class="crystal-img">
+                        <div class="crystal-info">
+                            <h3 class="crystal-name">Malachite</h3>
+                            <span class="crystal-element wood">Wood</span>
+                            <p class="crystal-desc">A stone of transformation, malachite absorbs negative energies and pollutants. It encourages risk-taking and change while protecting during travel.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="articles">
+                <h2>Metaphysical Wisdom</h2>
+                <p>Explore the ancient connections between Chinese metaphysics, the five elements, and crystal energies.</p>
+                
+                <div class="article-list">
+                    <!-- Article 1 -->
+                    <article class="article-card">
+                        <h3 class="article-title">The Five Elements and Crystal Selection</h3>
+                        <p class="article-meta">Published on: January 15, 2023 | Category: Elemental Harmony</p>
+                        <p class="article-excerpt">In Chinese metaphysics, the five elements (Wood, Fire, Earth, Metal, Water) form the foundation of all energy interactions. Each element corresponds to specific crystals that can enhance or balance its energy in your life. Discover how to choose crystals based on your elemental needs...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </article>
+                    
+                    <!-- Article 2 -->
+                    <article class="article-card">
+                        <h3 class="article-title">Ba Zi Destiny Analysis: Strengthening Weak Elements</h3>
+                        <p class="article-meta">Published on: February 28, 2023 | Category: Destiny Alignment</p>
+                        <p class="article-excerpt">Your Ba Zi (八字) or Four Pillars of Destiny chart reveals your elemental composition. When certain elements are weak or missing, specific crystals can help restore balance. Learn which crystals to use for each elemental deficiency and how to incorporate them into your daily practice...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </article>
+                    
+                    <!-- Article 3 -->
+                    <article class="article-card">
+                        <h3 class="article-title">Crystal Placement for Feng Shui Enhancement</h3>
+                        <p class="article-meta">Published on: March 12, 2023 | Category: Spatial Harmony</p>
+                        <p class="article-excerpt">The strategic placement of crystals in your home or workspace can dramatically improve the flow of qi (energy). This article explores the best crystals for each bagua area of your space and how to activate their energies for specific life areas including wealth, relationships, and career...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </article>
+                    
+                    <!-- Article 4 -->
+                    <article class="article-card">
+                        <h3 class="article-title">Moon Phase Charging: Aligning Crystals with Lunar Energy</h3>
+                        <p class="article-meta">Published on: April 5, 2023 | Category: Energetic Practices</p>
+                        <p class="article-excerpt">The moon's cyclical energy profoundly affects crystal vibrations. Learn how to charge your crystals during different moon phases for specific intentions - new moon for new beginnings, full moon for amplification, waning moon for release, and waxing moon for growth...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </article>
+                    
+                    <!-- Article 5 -->
+                    <article class="article-card">
+                        <h3 class="article-title">Combining Crystals with I Ching Divination</h3>
+                        <p class="article-meta">Published on: May 20, 2023 | Category: Divination</p>
+                        <p class="article-excerpt">The ancient I Ching (Book of Changes) provides profound wisdom for life's challenges. Discover how to pair specific crystals with each of the 64 hexagrams to enhance your understanding of the messages and strengthen your connection to the cosmic guidance...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </article>
+                </div>
+            </section>
+
+            <section id="social">
+                <h2>Connect With Our Community</h2>
+                <p>Join our growing community of metaphysical explorers and crystal enthusiasts.</p>
+                
+                <div class="social-links">
+                    <a href="https://facebook.com" class="social-link" target="_blank">f</a>
+                    <a href="https://instagram.com" class="social-link" target="_blank">i</a>
+                    <a href="https://pinterest.com" class="social-link" target="_blank">p</a>
+                    <a href="https://youtube.com" class="social-link" target="_blank">y</a>
+                    <a href="https://tiktok.com" class="social-link" target="_blank">t</a>
+                </div>
+            </section>
+
+            <section id="about">
+                <h2>About Auspicious Star</h2>
+                <p>Auspicious Star was founded in 2018 with the mission to bridge ancient Chinese metaphysical wisdom with modern crystal healing practices. Our team of feng shui masters, crystal therapists, and energy workers are dedicated to helping you align with your highest destiny.</p>
+                <p>We believe that by understanding the interplay of the five elements in your life and strategically using crystals as energetic tools, you can transform challenges into opportunities and manifest your true potential.</p>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <p>Auspicious Star - Illuminating Your Path Since 2018</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <p class="copyright">© 2023 Auspicious Star. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple animation for crystal cards when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.crystal-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
