@@ -116,48 +116,55 @@
             font-size: 2rem;
         }
 
-        .crystal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .crystal-card {
-            background-color: white;
-            border-radius: 8px;
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .crystal-card:hover {
-            transform: translateY(-5px);
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .crystal-slide {
+            min-width: 100%;
+            position: relative;
         }
 
         .crystal-img {
             width: 100%;
-            height: 200px;
+            height: 400px;
             object-fit: cover;
         }
 
         .crystal-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
             padding: 1.5rem;
         }
 
         .crystal-name {
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             margin: 0 0 0.5rem;
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         .crystal-element {
             display: inline-block;
-            padding: 0.2rem 0.5rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 1rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .earth { background-color: var(--earth-color); color: white; }
@@ -167,8 +174,55 @@
         .fire { background-color: var(--fire-color); color: white; }
 
         .crystal-desc {
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-dot.active {
+            background-color: var(--primary-color);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.5);
+            color: var(--primary-color);
+            border: none;
+            font-size: 1.5rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
         }
 
         .article-list {
@@ -286,12 +340,38 @@
                 margin: 0.5rem 0;
             }
             
-            .crystal-grid {
-                grid-template-columns: 1fr;
+            .crystal-img {
+                height: 300px;
+            }
+            
+            .crystal-info {
+                padding: 1rem;
+            }
+            
+            .crystal-name {
+                font-size: 1.4rem;
             }
             
             .social-links {
                 flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .crystal-img {
+                height: 250px;
+            }
+            
+            .crystal-name {
+                font-size: 1.2rem;
+            }
+            
+            .crystal-desc {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -319,106 +399,124 @@
                 <h2>Sacred Crystals & Their Energies</h2>
                 <p>Discover the transformative power of these sacred stones, each aligned with one of the five Chinese elements to bring balance and harmony to your life.</p>
                 
-                <div class="crystal-grid">
-                    <!-- Crystal 1 -->
-                    <div class="crystal-card">
-                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Amethyst Crystal" class="crystal-img">
-                        <div class="crystal-info">
-                            <h3 class="crystal-name">Amethyst</h3>
-                            <span class="crystal-element water">Water</span>
-                            <p class="crystal-desc">The amethyst is known for its spiritual protection and purification properties. It enhances intuition and promotes emotional balance, making it ideal for those seeking to connect with their higher selves.</p>
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <!-- Crystal 1 -->
+                        <div class="crystal-slide">
+                            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Amethyst Crystal" class="crystal-img">
+                            <div class="crystal-info">
+                                <h3 class="crystal-name">Amethyst</h3>
+                                <span class="crystal-element water">Water</span>
+                                <p class="crystal-desc">The amethyst is known for its spiritual protection and purification properties. It enhances intuition and promotes emotional balance, making it ideal for those seeking to connect with their higher selves.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Crystal 2 -->
+                        <div class="crystal-slide">
+                            <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Rose Quartz Crystal" class="crystal-img">
+                            <div class="crystal-info">
+                                <h3 class="crystal-name">Rose Quartz</h3>
+                                <span class="crystal-element earth">Earth</span>
+                                <p class="crystal-desc">The stone of unconditional love, rose quartz opens the heart chakra to all forms of love. It's particularly beneficial for healing emotional wounds and attracting loving relationships.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Crystal 3 -->
+                        <div class="crystal-slide">
+                            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Citrine Crystal" class="crystal-img">
+                            <div class="crystal-info">
+                                <h3 class="crystal-name">Citrine</h3>
+                                <span class="crystal-element fire">Fire</span>
+                                <p class="crystal-desc">Known as the merchant's stone, citrine attracts wealth, prosperity, and success. It carries the power of the sun, energizing every level of life and enhancing creativity.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Crystal 4 -->
+                        <div class="crystal-slide">
+                            <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Black Tourmaline Crystal" class="crystal-img">
+                            <div class="crystal-info">
+                                <h3 class="crystal-name">Black Tourmaline</h3>
+                                <span class="crystal-element earth">Earth</span>
+                                <p class="crystal-desc">A powerful protective stone that repels and blocks negative energies. It's excellent for psychic protection and grounding, creating a shield around the aura.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Crystal 5 -->
+                        <div class="crystal-slide">
+                            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Clear Quartz Crystal" class="crystal-img">
+                            <div class="crystal-info">
+                                <h3 class="crystal-name">Clear Quartz</h3>
+                                <span class="crystal-element metal">Metal</span>
+                                <p class="crystal-desc">The master healer, clear quartz amplifies energy and thought. It enhances spiritual growth, clarity of mind, and can be programmed for any intention.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Crystal 6 -->
+                        <div class="crystal-slide">
+                            <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lapis Lazuli Crystal" class="crystal-img">
+                            <div class="crystal-info">
+                                <h3 class="crystal-name">Lapis Lazuli</h3>
+                                <span class="crystal-element water">Water</span>
+                                <p class="crystal-desc">The stone of wisdom and truth, lapis lazuli stimulates enlightenment and enhances intellectual ability. It's excellent for activating the third eye.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Crystal 7 -->
+                        <div class="crystal-slide">
+                            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Carnelian Crystal" class="crystal-img">
+                            <div class="crystal-info">
+                                <h3 class="crystal-name">Carnelian</h3>
+                                <span class="crystal-element fire">Fire</span>
+                                <p class="crystal-desc">A stone of motivation and endurance, carnelian boosts vitality and stimulates creativity. It's particularly beneficial for overcoming procrastination.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Crystal 8 -->
+                        <div class="crystal-slide">
+                            <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Jade Crystal" class="crystal-img">
+                            <div class="crystal-info">
+                                <h3 class="crystal-name">Jade</h3>
+                                <span class="crystal-element wood">Wood</span>
+                                <p class="crystal-desc">Known as the dream stone in Chinese culture, jade brings harmony and balance. It attracts good luck and friendship while stabilizing the personality.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Crystal 9 -->
+                        <div class="crystal-slide">
+                            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pyrite Crystal" class="crystal-img">
+                            <div class="crystal-info">
+                                <h3 class="crystal-name">Pyrite</h3>
+                                <span class="crystal-element metal">Metal</span>
+                                <p class="crystal-desc">Called fool's gold, pyrite is a stone of wealth and abundance. It enhances memory, stimulates intellect, and protects against negative energies.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Crystal 10 -->
+                        <div class="crystal-slide">
+                            <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Malachite Crystal" class="crystal-img">
+                            <div class="crystal-info">
+                                <h3 class="crystal-name">Malachite</h3>
+                                <span class="crystal-element wood">Wood</span>
+                                <p class="crystal-desc">A stone of transformation, malachite absorbs negative energies and pollutants. It encourages risk-taking and change while protecting during travel.</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Crystal 2 -->
-                    <div class="crystal-card">
-                        <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Rose Quartz Crystal" class="crystal-img">
-                        <div class="crystal-info">
-                            <h3 class="crystal-name">Rose Quartz</h3>
-                            <span class="crystal-element earth">Earth</span>
-                            <p class="crystal-desc">The stone of unconditional love, rose quartz opens the heart chakra to all forms of love. It's particularly beneficial for healing emotional wounds and attracting loving relationships.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Crystal 3 -->
-                    <div class="crystal-card">
-                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Citrine Crystal" class="crystal-img">
-                        <div class="crystal-info">
-                            <h3 class="crystal-name">Citrine</h3>
-                            <span class="crystal-element fire">Fire</span>
-                            <p class="crystal-desc">Known as the merchant's stone, citrine attracts wealth, prosperity, and success. It carries the power of the sun, energizing every level of life and enhancing creativity.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Crystal 4 -->
-                    <div class="crystal-card">
-                        <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Black Tourmaline Crystal" class="crystal-img">
-                        <div class="crystal-info">
-                            <h3 class="crystal-name">Black Tourmaline</h3>
-                            <span class="crystal-element earth">Earth</span>
-                            <p class="crystal-desc">A powerful protective stone that repels and blocks negative energies. It's excellent for psychic protection and grounding, creating a shield around the aura.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Crystal 5 -->
-                    <div class="crystal-card">
-                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Clear Quartz Crystal" class="crystal-img">
-                        <div class="crystal-info">
-                            <h3 class="crystal-name">Clear Quartz</h3>
-                            <span class="crystal-element metal">Metal</span>
-                            <p class="crystal-desc">The master healer, clear quartz amplifies energy and thought. It enhances spiritual growth, clarity of mind, and can be programmed for any intention.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Crystal 6 -->
-                    <div class="crystal-card">
-                        <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Lapis Lazuli Crystal" class="crystal-img">
-                        <div class="crystal-info">
-                            <h3 class="crystal-name">Lapis Lazuli</h3>
-                            <span class="crystal-element water">Water</span>
-                            <p class="crystal-desc">The stone of wisdom and truth, lapis lazuli stimulates enlightenment and enhances intellectual ability. It's excellent for activating the third eye.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Crystal 7 -->
-                    <div class="crystal-card">
-                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Carnelian Crystal" class="crystal-img">
-                        <div class="crystal-info">
-                            <h3 class="crystal-name">Carnelian</h3>
-                            <span class="crystal-element fire">Fire</span>
-                            <p class="crystal-desc">A stone of motivation and endurance, carnelian boosts vitality and stimulates creativity. It's particularly beneficial for overcoming procrastination.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Crystal 8 -->
-                    <div class="crystal-card">
-                        <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Jade Crystal" class="crystal-img">
-                        <div class="crystal-info">
-                            <h3 class="crystal-name">Jade</h3>
-                            <span class="crystal-element wood">Wood</span>
-                            <p class="crystal-desc">Known as the dream stone in Chinese culture, jade brings harmony and balance. It attracts good luck and friendship while stabilizing the personality.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Crystal 9 -->
-                    <div class="crystal-card">
-                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Pyrite Crystal" class="crystal-img">
-                        <div class="crystal-info">
-                            <h3 class="crystal-name">Pyrite</h3>
-                            <span class="crystal-element metal">Metal</span>
-                            <p class="crystal-desc">Called fool's gold, pyrite is a stone of wealth and abundance. It enhances memory, stimulates intellect, and protects against negative energies.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Crystal 10 -->
-                    <div class="crystal-card">
-                        <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Malachite Crystal" class="crystal-img">
-                        <div class="crystal-info">
-                            <h3 class="crystal-name">Malachite</h3>
-                            <span class="crystal-element wood">Wood</span>
-                            <p class="crystal-desc">A stone of transformation, malachite absorbs negative energies and pollutants. It encourages risk-taking and change while protecting during travel.</p>
-                        </div>
-                    </div>
+                    <button class="carousel-btn prev">❮</button>
+                    <button class="carousel-btn next">❯</button>
+                </div>
+                
+                <div class="carousel-nav">
+                    <span class="carousel-dot active"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
                 </div>
             </section>
 
@@ -515,22 +613,74 @@
             });
         });
 
-        // Simple animation for crystal cards when they come into view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        // Carousel functionality
+        const carousel = document.querySelector('.carousel');
+        const slides = document.querySelectorAll('.crystal-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        
+        let currentIndex = 0;
+        const slideCount = slides.length;
+        
+        // Set up carousel
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
             });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.crystal-card').forEach(card => {
-            card.style.opacity = 0;
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(card);
+        }
+        
+        // Next slide
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slideCount;
+            updateCarousel();
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+            updateCarousel();
+        }
+        
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel();
+            });
         });
+        
+        // Button events
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Auto-advance (optional)
+        let autoSlide = setInterval(nextSlide, 5000);
+        
+        // Pause on hover
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(autoSlide);
+        });
+        
+        carouselContainer.addEventListener('mouseleave', () => {
+            autoSlide = setInterval(nextSlide, 5000);
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+        
+        // Initialize
+        updateCarousel();
     </script>
 </body>
 </html>
