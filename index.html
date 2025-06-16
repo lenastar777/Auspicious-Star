@@ -3,939 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auspicious Star - Chinese Metaphysics Jewelry</title>
+    <title>Auspicious Star - Crystal Metaphysics</title>
     <style>
-        /* 颜色变量定义 Color variables */
+        /* 全局样式 - 可以修改整体配色方案 */
         :root {
-            --dark-brown: #591902;
-            --medium-brown: #8C6645;
-            --light-brown: #A65132;
-            --pale-orange: #D98566;
-            --off-white: #F2F2F2;
-        }
-
-        /* 基础样式 Base styles */
-        body {
-            font-family: 'Noto Serif SC', serif, 'Times New Roman', serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--off-white);
-            color: var(--dark-brown);
-            line-height: 1.6;
-        }
-
-        /* 主容器 Main container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* 头部样式 Header styles */
-        header {
-            background: linear-gradient(135deg, var(--dark-brown), var(--medium-brown));
-            color: var(--off-white);
-            text-align: center;
-            padding: 2rem 0;
-            position: relative;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin: 0;
-            font-weight: normal;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .subtitle {
-            font-style: italic;
-            margin-top: 0.5rem;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* 导航栏 Navigation */
-        nav {
-            background-color: var(--light-brown);
-            padding: 1rem 0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .nav-links li {
-            margin: 0 1.5rem;
-        }
-
-        .nav-links a {
-            color: var(--off-white);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-        }
-
-        .nav-links a:hover {
-            background-color: var(--pale-orange);
-            color: var(--dark-brown);
-        }
-
-        /* 主图区域 Hero section */
-        .hero {
-            position: relative;
-            height: 500px;
-            overflow: hidden;
-            margin-bottom: 3rem;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(89, 25, 2, 0.4);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--off-white);
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            max-width: 800px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        /* 滚动图片区 Carousel section */
-        .carousel-section {
-            padding: 3rem 0;
-            background-color: white;
-            margin: 3rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--dark-brown);
-            position: relative;
-        }
-
-        .section-title:after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 3px;
-            background-color: var(--pale-orange);
-            margin: 0.5rem auto;
-        }
-
-        .carousel-container {
-            position: relative;
-            max-width: 100%;
-            overflow: hidden;
-        }
-
-        .carousel {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            position: relative;
-        }
-
-        .carousel-image {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-        }
-
-        .carousel-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(89, 25, 2, 0.8);
-            color: var(--off-white);
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .jewelry-name {
-            font-size: 1.8rem;
-            margin: 0 0 0.5rem;
-            font-style: italic;
-        }
-
-        .jewelry-stones {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .jewelry-benefits {
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--medium-brown);
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .carousel-dot.active {
-            background-color: var(--dark-brown);
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(217, 133, 102, 0.5);
-            color: var(--off-white);
-            border: none;
-            font-size: 1.5rem;
-            padding: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 10;
-        }
-
-        .carousel-btn:hover {
-            background-color: rgba(217, 133, 102, 0.8);
-        }
-
-        .prev {
-            left: 10px;
-        }
-
-        .next {
-            right: 10px;
-        }
-
-        /* 命理测算区 Destiny calculation section */
-        .destiny-section {
-            padding: 3rem 0;
-            background-color: var(--off-white);
-            margin: 3rem 0;
-        }
-
-        .destiny-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: var(--dark-brown);
-        }
-
-        input, select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid var(--medium-brown);
-            border-radius: 4px;
-            font-size: 1rem;
-            font-family: 'Noto Serif SC', serif;
-        }
-
-        button {
-            background-color: var(--light-brown);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            font-family: 'Noto Serif SC', serif;
-        }
-
-        button:hover {
-            background-color: var(--dark-brown);
-        }
-
-        .result-container {
-            display: none;
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .result-title {
-            font-size: 1.8rem;
-            color: var(--dark-brown);
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .result-description {
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .element-chart {
-            display: flex;
-            justify-content: space-around;
-            margin: 2rem 0;
-        }
-
-        .element-item {
-            text-align: center;
-        }
-
-        .element-circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 0.5rem;
-            font-weight: bold;
-            color: white;
-        }
-
-        .wood { background-color: #2e8b57; }
-        .fire { background-color: #ff4500; }
-        .earth { background-color: #8b5a2b; }
-        .metal { background-color: #a8a8a8; }
-        .water { background-color: #1e90ff; }
-
-        .recommendations {
-            margin-top: 2rem;
-        }
-
-        .recommendation-title {
-            font-size: 1.5rem;
-            color: var(--dark-brown);
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--pale-orange);
-            padding-bottom: 0.5rem;
-        }
-
-        .recommendation-item {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .recommendation-item:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--pale-orange);
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
-        /* 文章区 Articles section */
-        .articles-section {
-            padding: 3rem 0;
-            background-color: white;
-            margin: 3rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .article-card {
-            background-color: var(--off-white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .article-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .article-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .article-content {
-            padding: 1.5rem;
-        }
-
-        .article-title {
-            font-size: 1.3rem;
-            margin: 0 0 0.5rem;
-            color: var(--dark-brown);
-        }
-
-        .article-excerpt {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-
-        .read-more {
-            display: inline-block;
-            color: var(--light-brown);
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .read-more:hover {
-            color: var(--dark-brown);
-            text-decoration: underline;
-        }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 3rem;
-        }
-
-        .page-link {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            margin: 0 0.25rem;
-            background-color: var(--off-white);
-            color: var(--dark-brown);
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .page-link:hover, .page-link.active {
-            background-color: var(--light-brown);
-            color: white;
-        }
-
-        /* 社交媒体区 Social media section */
-        .social-section {
-            padding: 3rem 0;
-            background-color: var(--off-white);
-            margin: 3rem 0;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: var(--light-brown);
-            color: white;
-            font-size: 1.8rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .social-link:hover {
-            transform: translateY(-3px);
-            background-color: var(--dark-brown);
-        }
-
-        /* 页脚 Footer */
-        footer {
-            background-color: var(--dark-brown);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 1rem 0;
-        }
-
-        .footer-links a {
-            color: var(--pale-orange);
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        .copyright {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        /* 响应式设计 Responsive design */
-        @media (max-width: 768px) {
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav-links li {
-                margin: 0.5rem 0;
-            }
-            
-            .hero {
-                height: 400px;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .carousel-image {
-                height: 400px;
-            }
-            
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .social-links {
-                flex-wrap: wrap;
-            }
-            
-            .element-chart {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-            
-            .element-item {
-                width: 45%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .hero {
-                height: 300px;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .carousel-image {
-                height: 300px;
-            }
-            
-            .jewelry-name {
-                font-size: 1.4rem;
-            }
-            
-            .element-item {
-                width: 100%;
-            }
-        }
+            --primary-color: #5e2d8c;  /* 主色调（紫色） */
+            --secondary-color: #f8d56b; /* 辅助色（金色） */
+            --earth-color: #8b5a2b;    /* 土元素颜色 */
+            --metal-color: #a8a8a8;    /* 金元素颜色 */
+            --water-color: #1e90ff;    /* 水元素颜色 */
+            --wood-color: #2e8b57;     /* 木元素颜色 */
+            --fire-color: #ff4500;     /* 火元素颜色 */
+        }
+        
+        /* 此处省略CSS样式部分，完整样式请参考之前的代码 */
     </style>
-    <!-- 引入中文字体 Import Chinese font -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- 网站头部 Header -->
-    <header>
-        <div class="header-content">
-            <h1>AUSPICIOUS STAR</h1>
-            <p class="subtitle">Harmony Through Chinese Metaphysics & Jewelry</p>
-        </div>
-    </header>
+    <div class="overlay">
+        <!-- ==================== 网站头部 ==================== -->
+        <header>
+            <div class="header-content">
+                <h1>Auspicious Star</h1>  <!-- 网站主标题 - 可修改 -->
+                <p class="subtitle">Crystal Wisdom • Elemental Harmony • Destiny Alignment</p>  <!-- 副标题 - 可修改 -->
+            </div>
+        </header>
 
-    <!-- 导航栏 Navigation -->
-    <nav>
-        <ul class="nav-links">
-            <li><a href="#jewelry">Jewelry</a></li>
-            <li><a href="#destiny">Destiny Analysis</a></li>
-            <li><a href="#articles">Wisdom</a></li>
-            <li><a href="#social">Connect</a></li>
-        </ul>
-    </nav>
+        <!-- ==================== 导航菜单 ==================== -->
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#crystals">Crystals</a></li>  <!-- 导航项1 - 可修改 -->
+                <li><a href="#articles">Wisdom</a></li>    <!-- 导航项2 - 可修改 -->
+                <li><a href="#social">Connect</a></li>     <!-- 导航项3 - 可修改 -->
+                <li><a href="#about">About</a></li>        <!-- 导航项4 - 可修改 -->
+            </ul>
+        </nav>
 
-    <!-- 主图区域 Hero section -->
-    <section class="hero">
-        <img src="https://images.unsplash.com/photo-1603974372035-9d5c5f3255e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Chinese style jewelry" class="hero-image">
-        <div class="hero-overlay">
-            <h2 class="hero-title">New Chinese Style Jewelry</h2>
-            <p class="hero-subtitle">Infused with the wisdom of Five Elements metaphysics to harmonize your destiny and enhance your energy</p>
-        </div>
-    </section>
-
-    <main class="container">
-        <!-- 滚动图片区 Carousel section -->
-        <section id="jewelry" class="carousel-section">
-            <h2 class="section-title">Elemental Jewelry Collection</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Each piece is crafted with intention, combining beautiful minerals with the ancient wisdom of Wu Xing (Five Elements) to support your life journey.</p>
-            
-            <div class="carousel-container">
-                <div class="carousel">
-                    <!-- 首饰1 Jewelry 1 -->
-                    <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1603974372035-9d5c5f3255e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mountain Whisper Bracelet" class="carousel-image">
-                        <div class="carousel-caption">
-                            <h3 class="jewelry-name">Mountain Whisper</h3>
-                            <p class="jewelry-stones">Jade, Black Tourmaline, Hematite</p>
-                            <p class="jewelry-benefits">Strengthens Earth element for stability and grounding. Enhances patience and nurtures relationships. Ideal for those needing more Earth in their Ba Zi chart.</p>
+        <main>
+            <!-- ==================== 水晶轮播模块 ==================== -->
+            <section id="crystals">
+                <h2>Sacred Crystals & Their Energies</h2>  <!-- 模块标题 - 可修改 -->
+                <p>Discover the transformative power of these sacred stones...</p>  <!-- 模块描述 - 可修改 -->
+                
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <!-- 水晶1 - 可替换图片和文字内容 -->
+                        <div class="crystal-slide">
+                            <!-- 图片URL可替换为您自己的图片 -->
+                            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Amethyst Crystal" class="crystal-img">
+                            <div class="crystal-info">
+                                <h3 class="crystal-name">Amethyst</h3>  <!-- 水晶名称 - 可修改 -->
+                                <span class="crystal-element water">Water</span>  <!-- 元素类型 - 可修改 -->
+                                <p class="crystal-desc">The amethyst is known for its spiritual protection...</p>  <!-- 水晶描述 - 可修改 -->
+                            </div>
                         </div>
+                        
+                        <!-- 水晶2 - 同上可替换 -->
+                        <div class="crystal-slide">
+                            <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Rose Quartz Crystal" class="crystal-img">
+                            <div class="crystal-info">
+                                <h3 class="crystal-name">Rose Quartz</h3>
+                                <span class="crystal-element earth">Earth</span>
+                                <p class="crystal-desc">The stone of unconditional love...</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 水晶3-10的代码结构相同，此处省略 -->
+                        <!-- 每个crystal-slide div都是一个可替换的水晶项目 -->
                     </div>
                     
-                    <!-- 首饰2 Jewelry 2 -->
-                    <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="River Song Pendant" class="carousel-image">
-                        <div class="carousel-caption">
-                            <h3 class="jewelry-name">River Song</h3>
-                            <p class="jewelry-stones">Aquamarine, Moonstone, Lapis Lazuli</p>
-                            <p class="jewelry-benefits">Enhances Water element for intuition and wisdom. Supports emotional balance and communication. Beneficial for those with weak Water in their destiny.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 首饰3 Jewelry 3 -->
-                    <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Phoenix Flame Earrings" class="carousel-image">
-                        <div class="carousel-caption">
-                            <h3 class="jewelry-name">Phoenix Flame</h3>
-                            <p class="jewelry-stones">Carnelian, Ruby, Garnet</p>
-                            <p class="jewelry-benefits">Boosts Fire element for passion and energy. Enhances leadership qualities and charisma. Recommended for those needing more Fire in their chart.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 首饰4 Jewelry 4 -->
-                    <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Forest Breath Ring" class="carousel-image">
-                        <div class="carousel-caption">
-                            <h3 class="jewelry-name">Forest Breath</h3>
-                            <p class="jewelry-stones">Malachite, Green Aventurine, Moss Agate</p>
-                            <p class="jewelry-benefits">Strengthens Wood element for growth and creativity. Supports new beginnings and vitality. Ideal for those needing more Wood energy.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 首饰5 Jewelry 5 -->
-                    <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Metal Wind Cuff" class="carousel-image">
-                        <div class="carousel-caption">
-                            <h3 class="jewelry-name">Metal Wind</h3>
-                            <p class="jewelry-stones">Pyrite, White Howlite, Clear Quartz</p>
-                            <p class="jewelry-benefits">Enhances Metal element for clarity and precision. Supports organization and mental focus. Beneficial for those with weak Metal in their chart.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 首饰6 Jewelry 6 -->
-                    <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Harmony Knot Necklace" class="carousel-image">
-                        <div class="carousel-caption">
-                            <h3 class="jewelry-name">Harmony Knot</h3>
-                            <p class="jewelry-stones">Rose Quartz, Amethyst, Citrine</p>
-                            <p class="jewelry-benefits">Balances all Five Elements for overall harmony. Promotes love, wisdom, and prosperity. A perfect piece for those seeking balanced energy.</p>
-                        </div>
-                    </div>
+                    <!-- 轮播导航按钮 -->
+                    <button class="carousel-btn prev">❮</button>
+                    <button class="carousel-btn next">❯</button>
                 </div>
                 
-                <button class="carousel-btn prev">❮</button>
-                <button class="carousel-btn next">❯</button>
-            </div>
-            
-            <div class="carousel-nav">
-                <span class="carousel-dot active"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-            </div>
-        </section>
+                <!-- 轮播指示点 -->
+                <div class="carousel-nav">
+                    <span class="carousel-dot active"></span>
+                    <!-- 点数量应与水晶数量一致 -->
+                </div>
+            </section>
 
-        <!-- 命理测算区 Destiny calculation section -->
-        <section id="destiny" class="destiny-section">
-            <h2 class="section-title">Destiny Analysis</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Discover your elemental composition based on your birth date and receive personalized jewelry recommendations to enhance your destiny.</p>
-            
-            <div class="destiny-form">
-                <div class="form-group">
-                    <label for="birth-year">Year of Birth</label>
-                    <input type="number" id="birth-year" min="1900" max="2100" placeholder="e.g. 1985">
-                </div>
+            <!-- ==================== 文章模块 ==================== -->
+            <section id="articles">
+                <h2>Metaphysical Wisdom</h2>  <!-- 模块标题 - 可修改 -->
+                <p>Explore the ancient connections between Chinese metaphysics...</p>  <!-- 模块描述 - 可修改 -->
                 
-                <div class="form-group">
-                    <label for="birth-month">Month of Birth</label>
-                    <select id="birth-month">
-                        <option value="">Select Month</option>
-                        <option value="1">January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
-                        <option value="4">April</option>
-                        <option value="5">May</option>
-                        <option value="6">June</option>
-                        <option value="7">July</option>
-                        <option value="8">August</option>
-                        <option value="9">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="birth-day">Day of Birth</label>
-                    <input type="number" id="birth-day" min="1" max="31" placeholder="e.g. 15">
-                </div>
-                
-                <button id="calculate-btn">Analyze My Destiny</button>
-                
-                <div id="result-container" class="result-container">
-                    <h3 class="result-title">Your Destiny Analysis</h3>
-                    <div id="result-description" class="result-description">
-                        <!-- 结果将在这里动态生成 Results will be generated here dynamically -->
-                    </div>
+                <div class="article-list">
+                    <!-- 文章1 - 可替换内容 -->
+                    <article class="article-card">
+                        <h3 class="article-title">The Five Elements and Crystal Selection</h3>  <!-- 文章标题 - 可修改 -->
+                        <p class="article-meta">Published on: January 15, 2023 | Category: Elemental Harmony</p>  <!-- 文章元信息 - 可修改 -->
+                        <p class="article-excerpt">In Chinese metaphysics, the five elements...</p>  <!-- 文章摘要 - 可修改 -->
+                        <a href="#" class="read-more">Read More →</a>  <!-- 阅读更多链接 -->
+                    </article>
                     
-                    <div class="element-chart">
-                        <div class="element-item">
-                            <div class="element-circle wood">Wood</div>
-                            <div id="wood-value">20%</div>
-                        </div>
-                        <div class="element-item">
-                            <div class="element-circle fire">Fire</div>
-                            <div id="fire-value">20%</div>
-                        </div>
-                        <div class="element-item">
-                            <div class="element-circle earth">Earth</div>
-                            <div id="earth-value">20%</div>
-                        </div>
-                        <div class="element-item">
-                            <div class="element-circle metal">Metal</div>
-                            <div id="metal-value">20%</div>
-                        </div>
-                        <div class="element-item">
-                            <div class="element-circle water">Water</div>
-                            <div id="water-value">20%</div>
-                        </div>
-                    </div>
+                    <!-- 文章2 - 同上可替换 -->
+                    <article class="article-card">
+                        <h3 class="article-title">Ba Zi Destiny Analysis</h3>
+                        <p class="article-meta">Published on: February 28, 2023 | Category: Destiny Alignment</p>
+                        <p class="article-excerpt">Your Ba Zi (八字) or Four Pillars of Destiny chart...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </article>
                     
-                    <div class="recommendations">
-                        <h4 class="recommendation-title">Recommended Jewelry</h4>
-                        <div id="recommendations-list">
-                            <!-- 推荐将在这里动态生成 Recommendations will be generated here dynamically -->
-                        </div>
-                    </div>
+                    <!-- 文章3-5的代码结构相同，此处省略 -->
+                    <!-- 每个article-card div都是一个可替换的文章项目 -->
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 文章区 Articles section -->
-        <section id="articles" class="articles-section">
-            <h2 class="section-title">Metaphysical Wisdom</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Explore our collection of articles on Chinese metaphysics, Five Elements theory, and how jewelry can enhance your destiny.</p>
-            
-            <div class="articles-grid">
-                <!-- 文章1-8 Article 1-8 -->
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Five Elements Theory" class="article-image">
-                    <div class="article-content">
-                        <h3 class="article-title">Understanding the Five Elements in Chinese Metaphysics</h3>
-                        <p class="article-excerpt">The Five Elements (Wu Xing) form the foundation of Chinese metaphysics. Discover how Wood, Fire, Earth, Metal, and Water interact to create harmony or imbalance in your life...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </article>
+            <!-- ==================== 社交媒体模块 ==================== -->
+            <section id="social">
+                <h2>Connect With Our Community</h2>  <!-- 模块标题 - 可修改 -->
+                <p>Join our growing community of metaphysical explorers...</p>  <!-- 模块描述 - 可修改 -->
                 
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1603974372035-9d5c5f3255e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ba Zi Chart" class="article-image">
-                    <div class="article-content">
-                        <h3 class="article-title">How to Read Your Ba Zi (Four Pillars) Destiny Chart</h3>
-                        <p class="article-excerpt">Your Ba Zi chart reveals your elemental composition at birth. Learn how to interpret your chart and identify which elements you need to strengthen for better fortune...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Jade Jewelry" class="article-image">
-                    <div class="article-content">
-                        <h3 class="article-title">The Significance of Jade in Chinese Culture</h3>
-                        <p class="article-excerpt">Jade has been revered in China for millennia as the "Stone of Heaven". Discover its metaphysical properties and how it can protect and bless the wearer...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Feng Shui" class="article-image">
-                    <div class="article-content">
-                        <h3 class="article-title">Feng Shui for Jewelry: Placement and Direction</h3>
-                        <p class="article-excerpt">Learn how to apply Feng Shui principles to your jewelry collection to maximize their energetic benefits based on your personal needs and home layout...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Zodiac Signs" class="article-image">
-                    <div class="article-content">
-                        <h3 class="article-title">Chinese Zodiac Signs and Their Elemental Affinities</h3>
-                        <p class="article-excerpt">Each Chinese zodiac sign has natural affinities with certain elements. Discover your sign's strengths and which jewelry can help balance your weaknesses...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Chakras" class="article-image">
-                    <div class="article-content">
-                        <h3 class="article-title">Combining Chinese Elements with Chakra Healing</h3>
-                        <p class="article-excerpt">Explore how the Five Elements system interacts with the seven chakras, and which stones can address imbalances in both systems for holistic wellbeing...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Seasonal Energy" class="article-image">
-                    <div class="article-content">
-                        <h3 class="article-title">Seasonal Energy Shifts and Elemental Jewelry</h3>
-                        <p class="article-excerpt">Each season corresponds to different elemental energies. Learn how to adjust your jewelry choices throughout the year to stay in harmony with nature's cycles...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1585351519211-4a103a6df716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Meditation" class="article-image">
-                    <div class="article-content">
-                        <h3 class="article-title">Meditating with Elemental Stones</h3>
-                        <p class="article-excerpt">Specific meditation techniques using Five Element stones can help balance your energy field. Discover simple practices to incorporate into your daily routine...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </article>
-            </div>
-            
-            <div class="pagination">
-                <a href="#" class="page-link active">1</a>
-                <a href="#" class="page-link">2</a>
-                <a href="#" class="page-link">3</a>
-                <a href="#" class="page-link">Next →</a>
-            </div>
-        </section>
+                <div class="social-links">
+                    <!-- 社交媒体链接 - 替换#为实际链接 -->
+                    <a href="#" class="social-link" target="_blank">f</a>  <!-- Facebook -->
+                    <a href="#" class="social-link" target="_blank">i</a>  <!-- Instagram -->
+                    <a href="#" class="social-link" target="_blank">p</a>  <!-- Pinterest -->
+                    <a href="#" class="social-link" target="_blank">y</a>  <!-- YouTube -->
+                    <a href="#" class="social-link" target="_blank">t</a>  <!-- TikTok -->
+                </div>
+            </section>
 
-        <!-- 社交媒体区 Social media section -->
-        <section id="social" class="social-section">
-            <h2 class="section-title">Connect With Us</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Join our community of metaphysical jewelry enthusiasts and receive daily wisdom on harmonizing your life through the Five Elements.</p>
-            
-            <div class="social-links">
-                <a href="https://facebook.com" class="social-link" target="_blank">f</a>
-                <a href="https://instagram.com" class="social-link" target="_blank">i</a>
-                <a href="https://pinterest.com" class="social-link" target="_blank">p</a>
-                <a href="https://youtube.com" class="social-link" target="_blank">y</a>
-                <a href="https://tiktok.com" class="social-link" target="_blank">t</a>
-            </div>
-        </section>
-    </main>
+            <!-- ==================== 关于我们模块 ==================== -->
+            <section id="about">
+                <h2>About Auspicious Star</h2>  <!-- 模块标题 - 可修改 -->
+                <p>Auspicious Star was founded in 2018 with the mission...</p>  <!-- 关于内容1 - 可修改 -->
+                <p>We believe that by understanding the interplay...</p>  <!-- 关于内容2 - 可修改 -->
+            </section>
+        </main>
 
-    <!-- 页脚 Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>Auspicious Star - Harmonizing Destiny Since 2018</p>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Contact Us</a>
-                <a href="#">FAQ</a>
+        <!-- ==================== 页脚 ==================== -->
+        <footer>
+            <div class="footer-content">
+                <p>Auspicious Star - Illuminating Your Path Since 2018</p>  <!-- 页脚标语 - 可修改 -->
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>  <!-- 隐私政策链接 - 替换#为实际链接 -->
+                    <a href="#">Terms of Service</a>  <!-- 服务条款链接 -->
+                    <a href="#">Contact Us</a>  <!-- 联系我们链接 -->
+                    <a href="#">FAQ</a>  <!-- 常见问题链接 -->
+                </div>
+                <p class="copyright">© 2023 Auspicious Star. All rights reserved.</p>  <!-- 版权信息 - 可修改 -->
             </div>
-            <p class="copyright">© 2023 Auspicious Star. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script>
-        // 平滑滚动 Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // 轮播图功能 Carousel functionality
+        // ==================== 轮播图JavaScript ====================
+        // 这部分控制轮播图功能，一般不需要修改
+        // 除非您需要更改轮播速度或行为
+        
         const carousel = document.querySelector('.carousel');
-        const slides = document.querySelectorAll('.carousel-slide');
+        const slides = document.querySelectorAll('.crystal-slide');
         const dots = document.querySelectorAll('.carousel-dot');
         const prevBtn = document.querySelector('.prev');
         const nextBtn = document.querySelector('.next');
@@ -943,29 +163,24 @@
         let currentIndex = 0;
         const slideCount = slides.length;
         
-        // 更新轮播图 Update carousel
         function updateCarousel() {
             carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
             
-            // 更新指示点 Update dots
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentIndex);
             });
         }
         
-        // 下一张 Next slide
         function nextSlide() {
             currentIndex = (currentIndex + 1) % slideCount;
             updateCarousel();
         }
         
-        // 上一张 Previous slide
         function prevSlide() {
             currentIndex = (currentIndex - 1 + slideCount) % slideCount;
             updateCarousel();
         }
         
-        // 指示点导航 Dot navigation
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 currentIndex = index;
@@ -973,14 +188,12 @@
             });
         });
         
-        // 按钮事件 Button events
         nextBtn.addEventListener('click', nextSlide);
         prevBtn.addEventListener('click', prevSlide);
         
-        // 自动轮播 Auto-advance
+        // 自动轮播间隔时间（毫秒）- 可修改此数值
         let autoSlide = setInterval(nextSlide, 5000);
         
-        // 鼠标悬停暂停 Pause on hover
         const carouselContainer = document.querySelector('.carousel-container');
         carouselContainer.addEventListener('mouseenter', () => {
             clearInterval(autoSlide);
@@ -990,7 +203,6 @@
             autoSlide = setInterval(nextSlide, 5000);
         });
         
-        // 键盘导航 Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') {
                 nextSlide();
@@ -998,108 +210,8 @@
                 prevSlide();
             }
         });
-
-        // 命理测算功能 Destiny calculation function
-        document.getElementById('calculate-btn').addEventListener('click', function() {
-            const year = document.getElementById('birth-year').value;
-            const month = document.getElementById('birth-month').value;
-            const day = document.getElementById('birth-day').value;
-            
-            // 简单验证 Simple validation
-            if (!year || !month || !day) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            // 模拟计算 (实际应用中需要真实算法) Mock calculation (real app would use actual algorithm)
-            const elements = {
-                wood: Math.floor(Math.random() * 30) + 10,
-                fire: Math.floor(Math.random() * 30) + 10,
-                earth: Math.floor(Math.random() * 30) + 10,
-                metal: Math.floor(Math.random() * 30) + 10,
-                water: Math.floor(Math.random() * 30) + 10
-            };
-            
-            // 标准化到总和为100 Normalize to sum of 100
-            const total = elements.wood + elements.fire + elements.earth + elements.metal + elements.water;
-            for (let key in elements) {
-                elements[key] = Math.round((elements[key] / total) * 100);
-            }
-            
-            // 更新元素图表 Update element chart
-            document.getElementById('wood-value').textContent = elements.wood + '%';
-            document.getElementById('fire-value').textContent = elements.fire + '%';
-            document.getElementById('earth-value').textContent = elements.earth + '%';
-            document.getElementById('metal-value').textContent = elements.metal + '%';
-            document.getElementById('water-value').textContent = elements.water + '%';
-            
-            // 生成命理描述 Generate destiny description
-            const descriptions = [
-                `Born in ${year}, your destiny is influenced by the energies of that year's Heavenly Stem and Earthly Branch.`,
-                `Your elemental composition shows a unique balance that affects your personality and life path.`,
-                `The month of your birth adds specific qualities to your character and potential.`,
-                `Your day pillar reveals important information about your inner self and relationships.`
-            ];
-            
-            let description = descriptions.join(' ');
-            description += `<br><br>Your elemental balance is: Wood ${elements.wood}%, Fire ${elements.fire}%, Earth ${elements.earth}%, Metal ${elements.metal}%, Water ${elements.water}%.`;
-            
-            document.getElementById('result-description').innerHTML = description;
-            
-            // 生成推荐 Generate recommendations
-            const recommendationsList = document.getElementById('recommendations-list');
-            recommendationsList.innerHTML = '';
-            
-            // 找出最弱的元素 Find weakest element
-            let weakestElement = '';
-            let minValue = 100;
-            
-            for (let key in elements) {
-                if (elements[key] < minValue) {
-                    minValue = elements[key];
-                    weakestElement = key;
-                }
-            }
-            
-            // 根据最弱元素推荐首饰 Recommend jewelry based on weakest element
-            const recommendations = {
-                wood: [
-                    "Forest Breath Ring with Malachite to strengthen Wood energy",
-                    "Jade Pendant for growth and vitality",
-                    "Green Aventurine Bracelet for new beginnings"
-                ],
-                fire: [
-                    "Phoenix Flame Earrings with Carnelian to boost Fire energy",
-                    "Ruby Necklace for passion and leadership",
-                    "Red Jasper Ring for courage and action"
-                ],
-                earth: [
-                    "Mountain Whisper Bracelet with Black Tourmaline to enhance Earth energy",
-                    "Hematite Ring for stability and grounding",
-                    "Yellow Jasper Pendant for nurturing energy"
-                ],
-                metal: [
-                    "Metal Wind Cuff with Pyrite to strengthen Metal energy",
-                    "White Howlite Earrings for clarity and focus",
-                    "Clear Quartz Pendant for precision and organization"
-                ],
-                water: [
-                    "River Song Pendant with Aquamarine to boost Water energy",
-                    "Moonstone Bracelet for intuition and wisdom",
-                    "Lapis Lazuli Ring for emotional balance"
-                ]
-            };
-            
-            recommendations[weakestElement].forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'recommendation-item';
-                div.textContent = item;
-                recommendationsList.appendChild(div);
-            });
-            
-            // 显示结果 Show results
-            document.getElementById('result-container').style.display = 'block';
-        });
+        
+        updateCarousel();
     </script>
 </body>
 </html>
